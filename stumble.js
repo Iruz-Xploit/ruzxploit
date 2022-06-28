@@ -35,12 +35,12 @@ const questions = [
         message: color("Authorization keys taken at 'Round':"),
         prefix: `${color("[", "redBright")}+${color("]", "redBright")}`,
         suffix: "~",
-        choices: ["Stage 1", "Stage 2", "Stage 3"],
+        choices: ["Stage 1", "Stage 2", "Stage 3 (WINNER)"],
         filter: (value) => {
             return {
                 "Stage 1": 1,
                 "Stage 2": 2,
-                "Stage 3": 3,
+                "Stage 3 (WINNER)": 3,
             }[value];
         },
     },
@@ -50,7 +50,7 @@ const questions = [
         message: color("Interval Delay:"),
         prefix: `${color("[", "redBright")}+${color("]", "redBright")}`,
         suffix: "~",
-        default: 1000,
+        default: 7500,
         validate: function (input) {
             const done = this.async();
             if (input && isNaN(input)) {
@@ -86,7 +86,7 @@ function iStumble(interval, round, authorization) {
             } else if (typeof data == "object") {
                 const date = new Date();
                 let { Id, Username, Country, Region, Crowns, SkillRating } = data.User;
-                const print = `[${color(date.getHours())}:${date.getMinutes()}] ` + [color(Id, "cyanBright"), color(Username), color(Country, "white"), color(Region, "blueBright"), color(Crowns, "cyanBright"), color(SkillRating, "greenBright")].join(" | ");
+                const print = `[${color(date.getHours())}:${date.getMinutes()}] ` + [color(Id, "cyanBright"), color(Username), color(Country, "redBright"), color(Region, "blueBright"), color(Crowns, "cyanBright"), color(SkillRating, "greenBright")].join(" | ");
                 console.log(print);
             }
         } catch (error) {}
