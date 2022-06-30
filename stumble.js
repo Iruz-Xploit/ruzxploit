@@ -8,7 +8,7 @@ const questions = [
         type: "input",
         name: "authorization",
         message: color("Authorization keys:"),
-        prefix: `${color("[", "blueBright")}+${color("]", "redBright")}`,
+        prefix: `${color("[", "redBright")}+${color("]", "redBright")}`,
         suffix: "~",
         validate: function (input) {
             const done = this.async();
@@ -86,7 +86,7 @@ function iStumble(interval, round, authorization) {
             } else if (typeof data == "object") {
                 const date = new Date();
                 let { Id, Username, Country, Region, Crowns, SkillRating } = data.User;
-                const print = `[${color(date.getHours())}:${date.getMinutes()}] ` + [color(Id, "cyanBright"), color(Username), color(Country, "redBright"), color(Region, "blueBright"), color(Crowns, "cyanBright"), color(SkillRating, "greenBright")].join(" | ");
+                const print = `[${color(date.getHours())}:${date.getMinutes()}] ` + [color(Id, "cyanBright"), color(Username, "cyanBright"), color(Country, "redBright"), color(Region, "blueBright"), color(Crowns, "cyanBright"), color(SkillRating, "greenBright")].join(" | ");
                 console.log(print);
             }
         } catch (error) {}
@@ -94,7 +94,7 @@ function iStumble(interval, round, authorization) {
 }
 
 function color(text, color) {
-    return color ? chalk[color].bold(text) : chalk.blue.bold(text);
+    return color ? chalk[color].bold(text) : chalk.red.bold(text);
 }
 
 function stageRequest(authorization, round) {
